@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="kleantext",
     version="0.1.0",
-    author="Karan Desai",
+    author="Karan",
     author_email="Karansd00@gmail.com",
     description="A Python module for preprocessing text for NLP tasks",
     long_description=open("README.md").read(),
