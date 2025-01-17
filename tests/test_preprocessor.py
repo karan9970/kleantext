@@ -1,5 +1,5 @@
 import unittest
-from text_preprocessor.preprocessor import TextPreprocessor
+from kleantext.preprocessor import TextPreprocessor
 
 class TestTextPreprocessor(unittest.TestCase):
     def setUp(self):
