@@ -174,9 +174,3 @@ clean_text = preprocessor.clean_text(text)
 print(clean_text)  # Output: "This is a [CENSORED]!"
 ```
 
----
-
-## Download README
-To download this `README.md` file:
-1. Copy the text above into a file named `README.md`.
-2. Save the file in the root directory of your project.
