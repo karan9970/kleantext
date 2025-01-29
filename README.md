@@ -174,3 +174,156 @@ clean_text = preprocessor.clean_text(text)
 print(clean_text)  # Output: "This is a [CENSORED]!"
 ```
 
+## Usage Examples
+
+### 1. Converting Text to Lowercase (Optional Case-Sensitive Mode)
+```python
+preprocessor = TextPreprocessor(case_sensitive=True)
+text = "Hello WORLD!"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "Hello WORLD!"
+
+preprocessor = TextPreprocessor(case_sensitive=False)
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "hello world"
+```
+
+---
+
+### 2. Removing HTML Tags, Punctuation, Numbers, and Special Characters
+```python
+text = "This is a <b>bold</b> statement! Price: $100."
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "this is a bold statement price"
+```
+
+---
+
+### 3. Handling Emojis (Removal or Conversion to Textual Descriptions)
+```python
+text = "I love Python! 😍🔥"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "i love python :heart_eyes: :fire:"
+```
+
+---
+
+### 4. Handling Negations
+```python
+text = "I don't like this movie."
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "i do not like this movie"
+```
+
+---
+
+### 5. Removing or Retaining Specific Patterns (Hashtags, Mentions, etc.)
+```python
+text = "Follow @user and check #MachineLearning!"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "follow user and check machinelearning"
+```
+
+---
+
+### 6. Removing Stopwords (With Customizable Stopword Lists)
+```python
+preprocessor = TextPreprocessor(custom_stopwords={"example", "test"})
+text = "This is an example test showing stopword removal."
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "this is an showing stopword removal"
+```
+
+---
+
+### 7. Stemming and Lemmatization
+#### With Stemming:
+```python
+preprocessor = TextPreprocessor(use_stemming=True, use_lemmatization=False)
+text = "running flies better than walking"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "run fli better than walk"
+```
+#### With Lemmatization:
+```python
+preprocessor = TextPreprocessor(use_stemming=False, use_lemmatization=True)
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "running fly better than walking"
+```
+
+---
+
+### 8. Correcting Spelling (Optional)
+```python
+preprocessor = TextPreprocessor(perform_spellcheck=True)
+text = "Ths is a tst sentnce."
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "This is a test sentence"
+```
+
+---
+
+### 9. Expanding Contractions and Slang Handling
+```python
+from contractions import fix
+
+text = "I'm gonna go, but I can't wait!"
+text = fix(text)  
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "i am going to go but i cannot wait"
+```
+
+---
+
+### 10. Named Entity Recognition (NER) Masking
+```python
+text = "John Doe lives in New York."
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "[PERSON] lives in [LOCATION]"
+```
+
+---
+
+### 11. Detecting and Translating Text to a Target Language
+```python
+preprocessor = TextPreprocessor(detect_language=True, target_language="en")
+text = "Bonjour! Comment ça va?"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "Hello! How are you?"
+```
+
+---
+
+### 12. Profanity Filtering
+```python
+text = "This is a f***ing great product!"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "this is a **** great product"
+```
+
+---
+
+### 13. Customizable Text Preprocessing Pipeline
+```python
+preprocessor = TextPreprocessor(
+    remove_stopwords=True,
+    perform_spellcheck=True,
+    use_stemming=False,
+    use_lemmatization=True,
+    case_sensitive=False,
+    detect_language=True,
+    target_language="en"
+)
+
+text = "Ths is an amazng movi!! 😍🔥 <b>100%</b> recommended!"
+cleaned_text = preprocessor.clean_text(text)
+print(cleaned_text)  # Output: "this is an amazing movie heart_eyes fire recommended"
+```
+
+---
+
+## Conclusion
+KleanText is a robust and flexible text preprocessing library designed to clean and normalize text efficiently. You can customize the pipeline to fit your specific NLP needs. 🚀
+
+
+
